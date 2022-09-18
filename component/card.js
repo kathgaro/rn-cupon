@@ -4,7 +4,7 @@ import { colors } from "../constants/colors";
 
 const styles = StyleSheet.create({
     container: {
-        shadowColor: colors.white,
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2.62,
         elevation: 4,
         backgroundColor: colors.white,
-        borderRadius: 5,
+        borderRadius: 6,
     }
 })
 

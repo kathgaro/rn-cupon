@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
     },
     inputContainer:{
-        width: 320,
+        width: 300,
         maxWidth:' 80%',
-        height: 200,
+        height: 300,
         justifyContent: 'center',
         marginHorizontal: 20,
         alignItems: 'center',
