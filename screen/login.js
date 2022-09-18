@@ -1,9 +1,10 @@
-import React from "react";
-import  { View, Text, StyleSheet, Button} from "react-native";
+import React, {useState} from "react";
+import  { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard} from "react-native";
 
 import Input from "../component/input";
 import Card from "../component/card";
 import { colors } from "../constants/colors";
+
 
 const styles = StyleSheet.create({
     container: {
@@ -52,37 +53,48 @@ const styles = StyleSheet.create({
 })
 
 const CuponMade = ({titlelog, label}) => {
+    const [cupon, setCupon] = useState('');
+
+    const ondHandleChange=(text)=>{
+        //VALIDACION para solo ingresar numeros -no letras- del 0 al 9
+        setCupon(text.replace(/[^0-9]/g, ''));
+    }
     return(
-        <View style={styles.container}>
+        //                            Linea 64 - Al hacer clic afuera desaparece el teclado
+        <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
+            <View style={styles.container}>
 
-            <Text style={styles.titlelog}>{titlelog}</Text>
+                <Text style={styles.titlelog}>{titlelog}</Text>
 
-            <Card style={styles.inputContainer}>
-                <Text style={styles.label}>{label}</Text>
-                <Input 
-                    style={styles.inputText} 
-                    cursorColor='#C69B64' 
-                    keyboardType='numeric'
-                    maxLength={5}
-                    blurOnSubmit
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                />
-            
-                <View style={styles.buttonContainer}>
-                    <Button 
-                        title='Agregar'
-                        color='#C69B64' 
-                        onPress={()=> null}
+                <Card style={styles.inputContainer}>
+                    <Text style={styles.label}>{label}</Text>
+                    <Input 
+                        style={styles.inputText} 
+                        cursorColor='#C69B64' 
+                        keyboardType='numeric'
+                        maxLength={5}
+                        blurOnSubmit
+                        autoCapitalize='none'
+                        autoCorrect={false}
+                        onChangeText={(text)=> ondHandleChange(text)}
+                        value={cupon}
                     />
-                    <Button 
-                        title='Borrar'
-                        color='#C2C2C2'
-                        onPress={()=> null}
-                    /> 
-                </View>
-            </Card>
-        </View>
+                
+                    <View style={styles.buttonContainer}>
+                        <Button 
+                            title='Agregar'
+                            color='#C69B64' 
+                            onPress={()=> null}
+                        />
+                        <Button 
+                            title='Borrar'
+                            color='#C2C2C2'
+                            onPress={()=> null}
+                        /> 
+                    </View>
+                </Card>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 
