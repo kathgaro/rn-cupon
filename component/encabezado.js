@@ -12,13 +12,14 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         color: 'black',
-        fontWeight: 'bold',
+        fontFamily:'u-bold',
         marginLeft: 20,
     },
     subtitle:{
         fontSize: 18,
         color: colors.black,
         marginLeft: 20,
+        fontFamily:'u-light',
     }
 });
 
