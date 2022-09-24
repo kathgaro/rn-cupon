@@ -3,7 +3,7 @@
     "name": "clase-seis-ramdom-number",
     "slug": "clase-seis-ramdom-number",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

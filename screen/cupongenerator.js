@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import  { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, ScrollView, Dimensions} from "react-native";
+import  { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, ScrollView, Dimensions, KeyboardAvoidingView, Platform} from "react-native";
 
 import Input from "../component/input";
 import Card from "../component/card";
@@ -138,38 +138,39 @@ const CuponMade = ({titlelog, label, onStart}) => {
     )
 
     return(
-        //                            Linea 64 - Al hacer clic afuera desaparece el teclado
-        <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
-            <ScrollView style={styles.containerScroll}>
-                <View style={styles.container}>
-                    <Card style={styles.inputContainer}>
-                        <Text style={styles.titlelog}>{titlelog}</Text>
-                        <Text style={styles.label}>{label}</Text>
-                        <Input 
-                            style={styles.inputText} 
-                            cursorColor='#C69B64' 
-                            keyboardType='numeric'
-                            maxLength={2}
-                            blurOnSubmit
-                            autoCapitalize='none'
-                            autoCorrect={false}
-                            onChangeText={(text)=> ondHandleChange(text)}
-                            value={cupon}
-                        />
-                    
-                        <View style={styles.buttonContainer}>
-                            <Button 
-                                title='Agregar'
-                                color={colors.primary} 
-                                onPress={validar}
+        <KeyboardAvoidingView style={styles.containerScroll} behavior={Platform.OS == 'android' ? 'padding' : 'position'} keyboardVerticalOffset={30}>
+            <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
+                <ScrollView style={styles.containerScroll}>
+                    <View style={styles.container}>
+                        <Card style={styles.inputContainer}>
+                            <Text style={styles.titlelog}>{titlelog}</Text>
+                            <Text style={styles.label}>{label}</Text>
+                            <Input 
+                                style={styles.inputText} 
+                                cursorColor='#C69B64' 
+                                keyboardType='numeric'
+                                maxLength={2}
+                                blurOnSubmit
+                                autoCapitalize='none'
+                                autoCorrect={false}
+                                onChangeText={(text)=> ondHandleChange(text)}
+                                value={cupon}
                             />
-                            
-                        </View>
-                    </Card>
-                    {confirmedOuput()}
-                </View>
-            </ScrollView>
-        </TouchableWithoutFeedback>
+                        
+                            <View style={styles.buttonContainer}>
+                                <Button 
+                                    title='Agregar'
+                                    color={colors.primary} 
+                                    onPress={validar}
+                                />
+                                
+                            </View>
+                        </Card>
+                        {confirmedOuput()}
+                    </View>
+                </ScrollView>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
 

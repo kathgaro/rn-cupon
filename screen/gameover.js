@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Button, Dimensions, Alert, Image } from "react-native";
+import { View, StyleSheet, Text, Button, Dimensions, Alert, Image, ScrollView } from "react-native";
 import Card from "../component/card";
 import { colors } from "../constants/colors";
 
@@ -26,22 +26,23 @@ const styles= StyleSheet.create({
 })
 const GameOverScreen = ({roundNumber, userNumber, onRestartGame}) => {
     return(
-        <View style={styles.container}>
-            <Image source={require('../assets/img/gameover.jpg')} style={styles.image} />
+        <ScrollView style={styles.containerScroll}>
+            <View style={styles.container}>
 
-            <Card style={styles.resultContainer}>
-                <Text style={styles.textCard}>Intentos: {roundNumber} </Text>
-                <Text style={styles.textCard}>Jugaste con el numero: {userNumber} </Text>
+                <Card style={styles.resultContainer}>
+                    <Image source={require('../assets/img/gameover.jpg')} style={styles.image} />
+                    <Text style={styles.textCard}>Intentos: {roundNumber} </Text>
+                    <Text style={styles.textCard}>Jugaste con el numero: {userNumber} </Text>
 
-                <Button 
-                title='Reiniciar' 
-                onPress={onRestartGame}
-                color={colors.primary}
-            />
-            </Card>
+                    <Button 
+                    title='Reiniciar' 
+                    onPress={onRestartGame}
+                    color={colors.primary}
+                />
+                </Card>
             
-        </View>
-        
+            </View>
+        </ScrollView>
     )
 }
 
