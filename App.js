@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, SafeAreaView } from 'react-native';
 import {useFonts} from 'expo-font'
 import { colors } from "./constants/colors";
 
@@ -75,14 +75,13 @@ export default function App() {
     content = <GameOverScreen roundNumber={roundtime} userNumber={userNumber} onRestartGame={onRestartGame}/>
   }
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Encabezado 
         title={title}
         subtitle='Creá tu propio descuento jugando'
       />
       {content}
-
-    </View>
+    </SafeAreaView>
   );
 }
 
