@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-start',
         //backgroundColor: 'red',
-        margingTop: Platform.OS == 'android' ? StatusBar.currentHeight:0,
+        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     },
     title: {
         fontSize: 24,
